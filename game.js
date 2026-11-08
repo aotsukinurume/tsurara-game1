@@ -1,7 +1,7 @@
 // ===== BGM設定 =====
 const bgm = new Audio('winter-wonderland.mp3');
 bgm.loop = true;  // ループ再生を有効にする
-bgm.volume = 0.4; // 音量（0.0 〜 1.0）※お好みで調整してください
+bgm.volume = 0.2; // 音量（0.0 〜 1.0）※お好みで調整してください
 
 // ===== 設定（ここの数字をいじると難易度が変わる） =====
 const CONFIG = {
