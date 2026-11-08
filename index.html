@@ -4,10 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>つらら避け</title>
-<!-- URLシェア時のカード設定。公開後に og:url と og:image を自分のものに変えてね -->
+
+<!-- OGP設定 -->
+<meta property="og:type" content="website">
 <meta property="og:title" content="つらら避け｜何秒よけられる？">
 <meta property="og:description" content="落ちてくるつららをひたすらよけるミニゲーム">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://aotsukinurume.github.io/tsurara-game1/">
+<meta property="og:image" content="https://aotsukinurume.github.io/tsurara-game1/ogp.png">
+
+<!-- Xカード設定 -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="つらら避け｜何秒よけられる？">
+<meta name="twitter:description" content="落ちてくるつららをひたすらよけるミニゲーム">
+<meta name="twitter:image" content="https://aotsukinurume.github.io/tsurara-game1/ogp.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,7 +32,7 @@
   </div>
 </div>
 <script>
-// 何かで止まったとき、原因を画面に出す
+// error画面を出す
 window.onerror = function (m, src, line) {
   var e = document.getElementById('msg');
   if (e) e.textContent = 'エラー: ' + m + ' (' + String(src || '').split('/').pop() + ':' + line + ')';
