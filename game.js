@@ -1,3 +1,8 @@
+// ===== BGM設定 =====
+const bgm = new Audio('winter-wonderland.mp3');
+bgm.loop = true;  // ループ再生を有効にする
+bgm.volume = 0.4; // 音量（0.0 〜 1.0）※お好みで調整してください
+
 // ===== 設定（ここの数字をいじると難易度が変わる） =====
 const CONFIG = {
   spawnStart: 0.55,    // つららが出る間隔（秒）の初期値
@@ -40,7 +45,7 @@ const SPRITES = [
 SPRITES.forEach(s => s.img = loadImg(s.f));
 // 自キャラの当たり判定（円：中心x, 中心y, 半径。地面からの相対位置）
 const BODY = [[-24, 0, 11], [0, -4, 15], [24, 0, 11], [12, -16, 10]];
-let face = 1;   // 1=左向き, -1=右向き
+let face = 1;    // 1=左向き, -1=右向き
 
 let state = 'ready', t = 0, px = W / 2, target = W / 2, last = 0, spawn = 0, icicles = [];
 
@@ -75,10 +80,16 @@ addEventListener('keyup', e => keys[e.key] = false);
 function start() {
   state = 'play'; t = 0; spawn = 0; icicles = []; px = target = W / 2;
   ui.classList.add('hide');
+
+  // BGMを再生する（曲を最初からにして再生）
+  bgm.currentTime = 0;
+  bgm.play().catch(e => {});
 }
 
 function gameOver() {
   state = 'over';
+  bgm.pause(); // ゲームオーバー時に音楽を止める
+
   const score = Math.round(t * 10) / 10;
   const entry = { s: score, d: Date.now() };
   ranking.push(entry);
