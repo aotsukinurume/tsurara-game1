@@ -88,7 +88,7 @@ function start() {
 
 function gameOver() {
   state = 'over';
-  bgm.pause(); // ゲームオーバー時に音楽を止める
+  //bgm.pause(); // ゲームオーバー時に音楽を止める
 
   const score = Math.round(t * 10) / 10;
   const entry = { s: score, d: Date.now() };
