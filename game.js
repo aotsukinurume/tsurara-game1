@@ -81,9 +81,10 @@ function start() {
   state = 'play'; t = 0; spawn = 0; icicles = []; px = target = W / 2;
   ui.classList.add('hide');
 
-  // BGMを再生する（曲を最初からにして再生）
-  bgm.currentTime = 0;
-  bgm.play().catch(e => {});
+  // BGMが止まっている時（最初の1回目など）だけ再生し、リスタート時は巻き戻さず流しっぱなしにする
+  if (bgm.paused) {
+    bgm.play().catch(e => {});
+  }
 }
 
 function gameOver() {
